@@ -22,13 +22,39 @@ export class EditUserDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<EditUserDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: User
-  ) {}
-
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+  ) {
+    this.email.setValue(data.email);
+    this.firstName.setValue(data.firstName);
+    this.lastName.setValue(data.lastName);
   }
+
+  getErrorMessage(control: FormControl): string {
+    if (control.hasError('required')) return 'You must enter a value';
+
+    if (control.hasError('minlength'))
+      return 'You must enter at least two characters';
+
+    if (control === this.email && control.hasError('email'))
+      return 'Not a valid email';
+
+    return '';
+  }
+
+  onCancel() {
+    this.dialogRef.close();
+  }
+
+  onUpdate() {
+    this.dialogRef.close(<EditUserDialogResult>{
+      firstName: this.firstName.value,
+      lastName: this.lastName.value,
+      email: this.email.value,
+    });
+  }
+}
+
+export interface EditUserDialogResult {
+  firstName: string;
+  lastName: string;
+  email: string;
 }

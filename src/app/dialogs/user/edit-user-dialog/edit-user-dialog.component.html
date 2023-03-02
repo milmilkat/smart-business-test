@@ -1,12 +1,41 @@
-<div class="example-container">
-  <mat-form-field appearance="fill">
-    <mat-label>Enter your email</mat-label>
-    <input
-      matInput
-      placeholder="pat@example.com"
-      [formControl]="email"
-      required
-    />
-    <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
-  </mat-form-field>
+<div class="dialog">
+  <h1 mat-dialog-title>User Details</h1>
+  <div class="dialog-content">
+    <!-- First Name Field -->
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input matInput [formControl]="firstName" required />
+      <mat-error *ngIf="firstName.invalid">{{
+        getErrorMessage(firstName)
+      }}</mat-error>
+    </mat-form-field>
+
+    <!-- Last Name Field -->
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input matInput [formControl]="lastName" required />
+      <mat-error *ngIf="lastName.invalid">{{
+        getErrorMessage(lastName)
+      }}</mat-error>
+    </mat-form-field>
+
+    <!-- Email Field -->
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your email</mat-label>
+      <input matInput [formControl]="email" required />
+      <mat-error *ngIf="email.invalid">{{ getErrorMessage(email) }}</mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-raised-button (click)="onCancel()">Cancel</button>
+    <button
+      mat-raised-button
+      (click)="onUpdate()"
+      color="primary"
+      cdkFocusInitial
+      [disabled]="email.invalid || lastName.invalid || firstName.invalid"
+    >
+      Update
+    </button>
+  </div>
 </div>

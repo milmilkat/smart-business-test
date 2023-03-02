@@ -9,7 +9,10 @@ import { MatTableModule } from '@angular/material/table';
 import { EditUserDialogComponent } from './dialogs/user/edit-user-dialog/edit-user-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -21,7 +24,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatTableModule,
     MatDialogModule,
     MatInputModule,
+    MatButtonModule,
     MatFormFieldModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
   ],
   providers: [],

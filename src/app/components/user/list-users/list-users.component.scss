@@ -11,3 +11,21 @@
 .mat-mdc-row:hover .mat-mdc-cell {
   border-color: currentColor;
 }
+
+.loading-container {
+  display: flex;
+  padding-top: 200px;
+  justify-content: center;
+}
+
+.errorSnackBar {
+  margin-top: 93px !important;
+  background-color: darkred !important;
+  color: white !important;
+}
+
+.successSnackBar {
+  margin-top: 93px !important;
+  background-color: forestgreen !important;
+  color: white !important;
+}

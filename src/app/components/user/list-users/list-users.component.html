@@ -1,4 +1,9 @@
-<table mat-table [dataSource]="users" class="mat-elevation-z8 user-table">
+<table
+  mat-table
+  [dataSource]="dataSource"
+  class="mat-elevation-z8 user-table"
+  *ngIf="!loading"
+>
   <!-- First Name Column -->
   <ng-container matColumnDef="firstName">
     <th mat-header-cell *matHeaderCellDef>First Name</th>
@@ -30,3 +35,7 @@
     (click)="onRowClick(row)"
   ></tr>
 </table>
+
+<div *ngIf="loading" class="flex loading-container">
+  <mat-spinner diameter="200" strokeWidth="10"> </mat-spinner>
+</div>
